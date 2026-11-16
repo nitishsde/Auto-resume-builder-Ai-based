@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AutoResume – AI Build Resume</title>
+    <link rel="shortcut icon" href="https://thumbs.dreamstime.com/b/visual-elements-image-features-minimalist-geometric-logo-composed-two-identical-green-squares-offset-diagonally-each-480691702.jpg" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="ai-builder.css" />
+  </head>
+  <body class="aib">
+    <svg class="wave" viewBox="0 0 1440 800" preserveAspectRatio="none" aria-hidden="true">
+      <path class="w1" d="M-200 430C40 330 280 530 520 430S1000 330 1240 430 1560 500 1700 430V800H-200Z" />
+      <path class="w2" d="M-200 520C60 440 300 600 560 520S1040 430 1280 520 1580 580 1700 520V800H-200Z" />
+      <path class="w3" d="M-200 610C80 540 320 680 600 610S1080 540 1320 610 1600 660 1700 610V800H-200Z" />
+    </svg>
+    <section class="top">
+      <h1><span class="logo-ai" id="lg"></span>AI Build Resume</h1>
+      <p>Type or speak your details. An ATS-friendly A4 resume builds live on the right.</p>
+      <div id="mq2"></div>
+    </section>
+    <nav class="tabs" id="tabs">
+      <button data-p="tools">Tools</button><button data-p="chat" class="on">AI</button><button data-p="view">Resume</button>
+    </nav>
+    <main class="g3">
+      <aside class="pane" id="p-tools">
+        <h3>Resume settings</h3>
+        <label>Sector<select id="type"></select></label>
+        <label>Version<select id="ver">
+          <option value="1.0">Build 1.0 – as typed</option>
+          <option value="2.5">Build 2.5 – + summary</option>
+          <option value="5">Build 5 – + skill groups</option>
+          <option value="pro">Build Pro 0.5 – + keywords</option></select></label>
+        <label>Template<button class="btn ghost sm full" id="tbtn"></button></label>
+        <label>Heading colour<div class="sw" id="sw"></div></label>
+        <label>Font<select id="font"><option>Montserrat</option><option>Verdana</option><option>Arial</option><option>Calibri</option><option>Times New Roman</option></select></label>
+        <label>Size<select id="fs"><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option></select></label>
+        <div class="row2"><a class="btn ghost sm" href="builder.html">Edit manually</a><button class="btn ghost sm" id="rst">Start over</button></div>
+        <h3>What the AI needs</h3>
+        <div id="need" class="need"></div>
+      </aside>
+      <section class="pane chat" id="p-chat">
+        <div class="chat-actions">
+          <button class="btn ghost sm" id="newChat">+ New chat</button>
+          <button class="btn ghost sm" id="historyToggle" aria-expanded="false">Chat history</button>
+          <button class="btn ghost sm" id="resetChat">Reset chat</button>
+        </div>
+        <div id="chatHistory" class="chat-history" hidden></div>
+        <div id="msgs" class="msgs"></div>
+        <div class="pm" id="pm"></div>
+        <div class="box">
+          <button class="acc" id="acc" hidden></button>
+          <div class="ta"><div class="gh" id="gh" aria-hidden="true"></div><textarea id="ip" rows="2" placeholder="Describe your resume, or paste your details…"></textarea></div>
+          <div class="bar">
+            <button class="ib" id="att" title="Upload resume (PDF, DOCX, TXT)" data-i="clip"></button>
+            <button class="ib txt" id="tp" title="Choose template"><span data-i="tpl"></span>Templates</button>
+            <span class="sp"></span>
+            <select id="lang" title="Voice language"><option value="en-IN">EN</option><option value="hi-IN">हिं</option></select>
+            <button class="ib" id="mic" title="Speak" data-i="mic"></button>
+            <button class="ib send" id="snd" title="Send" data-i="send"></button>
+          </div>
+          <input type="file" id="fi" accept=".pdf,.docx,.txt,.md" hidden />
+        </div>
+      </section>
+      <aside class="pane view" id="p-view">
+        <div class="vh"><b id="vt">Live resume · A4</b>
+          <div class="dd"><button class="btn sm" id="dbtn"><span data-i="dl"></span>Download</button>
+            <div class="dm" id="dm"><button data-f="pdf"><i>PDF</i>PDF document</button><button data-f="doc"><i>DOC</i>Word document</button><button data-f="png"><i>PNG</i>Image</button><button data-f="xls"><i>XLS</i>Excel sheet</button></div></div></div>
+        <div class="pw" id="pw"><div class="paper" id="paper"><div id="resume" class="sheet"></div></div></div>
+      </aside>
+    </main>
+    <div class="md" id="md"><div class="mb"><div class="vh"><b>Choose a template</b><button class="btn ghost sm" id="mc">Close</button></div><div class="tg" id="tg"></div></div></div>
+    <div id="toast"></div>
+    <script src="core.js"></script>
+    <script src="app.js"></script>
+    <script src="ai-parse.js"></script>
+    <script src="ai-builder.js"></script>
+  </body>
+</html>

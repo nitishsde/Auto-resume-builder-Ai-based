@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <link rel="shortcut icon" href="https://thumbs.dreamstime.com/b/visual-elements-image-features-minimalist-geometric-logo-composed-two-identical-green-squares-offset-diagonally-each-480691702.jpg" type="image/x-icon">
+    <title>AutoResume – Build</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="bwrap">
+      <div class="bgrid">
+        <section>
+          <div id="stepper" class="stepper"></div>
+          <h2 id="stitle"></h2>
+          <div id="step"></div>
+          <div class="row2">
+            <button class="btn ghost" id="prev">Back</button
+            ><button class="btn" id="next">Next</button>
+          </div>
+          <div class="card">
+            <div class="sc">
+              <div id="score"></div>
+              <div style="flex: 1"><div id="tips"></div></div>
+            </div>
+            <div id="ai"></div>
+          </div>
+        </section>
+        <aside class="pv">
+          <div class="ctl">
+            <label
+              >Font<select id="font">
+                <option>Montserrat</option>
+                <option>Verdana</option>
+                <option>Arial</option>
+                <option>Calibri</option>
+                <option>Times New Roman</option>
+              </select></label
+            ><label
+              >Size<select id="fsize">
+                <option>12</option>
+                <option>13</option>
+                <option selected>14</option>
+                <option>15</option>
+                <option>16</option>
+              </select></label
+            ><label
+              >Text<input type="color" id="tcolor" value="#111111" /></label
+            ><label
+              >Headings<input type="color" id="accent" value="#000000"
+            /></label>
+          </div>
+          <div id="resume" class="sheet"></div>
+        </aside>
+      </div>
+    </main>
+    <div id="toast"></div>
+    <script src="core.js"></script>
+    <script src="app.js"></script>
+    <script src="builder.js"></script>
+  </body>
+</html>

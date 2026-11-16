@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AutoResume – AI ATS Resume Builder</title>
+        <link rel="shortcut icon" href="https://thumbs.dreamstime.com/b/visual-elements-image-features-minimalist-geometric-logo-composed-two-identical-green-squares-offset-diagonally-each-480691702.jpg" type="image/x-icon">    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      @keyframes ai-icon-blink {
+        50% { opacity: 0.35; transform: scale(1.15); }
+      }
+      .ai-link { display: inline-flex; align-items: center; gap: 8px; }
+      .ai-link-icon { animation: ai-icon-blink 1.2s ease-in-out infinite; }
+      .best-format { font-size: 0.7em; font-weight: 700; }
+      .hero {
+        position: relative;
+        isolation: isolate;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        color: #14251b;
+        background: linear-gradient(135deg, #f8fcf8 5%, #e8f4eb 52%, #fff 100%);
+      }
+      .hero::before,
+      .hero::after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        pointer-events: none;
+      }
+      .hero::before {
+        inset: -35% -10% auto;
+        height: 125%;
+        border-radius: 0 0 50% 48%;
+        background:
+          radial-gradient(ellipse at 18% 68%, #b8dfc488 0, transparent 42%),
+          radial-gradient(ellipse at 78% 28%, #d2ead688 0, transparent 40%);
+        transform: rotate(-5deg);
+        animation: hero-wave-drift 12s ease-in-out infinite alternate;
+      }
+      .hero::after {
+        inset: auto -12% -68%;
+        height: 100%;
+        border-radius: 50% 48% 0 0;
+        background: radial-gradient(ellipse at 52% 0, #26734d20 0, transparent 66%);
+      }
+      .hero > * { position: relative; z-index: 1; }
+      .hero h1 { color: #101914; }
+      .hero > p { color: #34443a; }
+      .hero .tag { color: #41f79c; }
+      .hero .pill.dark { background: #14251b; color: #fff; }
+      .hero .pill.ai-link { background: #26734d; color: #fff; }
+      @keyframes hero-wave-drift {
+        from { transform: rotate(-5deg) translateX(-1%); }
+        to { transform: rotate(-2deg) translateX(1%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero::before { animation: none; }
+      }
+      .ai-feature-section {
+        width: 100%;
+        box-sizing: border-box;
+        padding: clamp(36px, 7vw, 88px) clamp(20px, 6vw, 80px);
+        background: #f5f7f5;
+      }
+      .ai-feature-layout {
+        width: min(1200px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        align-items: center;
+        gap: clamp(28px, 6vw, 80px);
+      }
+      .ai-feature-copy h2 { margin: 10px 0 14px; }
+      .ai-feature-copy p { max-width: 430px; line-height: 1.7; }
+      .ai-feature-label {
+        color: #26734d;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .ai-feature-list { display: grid; gap: 10px; margin: 22px 0; }
+      .ai-feature-item { display: flex; align-items: center; gap: 10px; }
+      .ai-feature-item span { color: #26734d; font-weight: 700; }
+      .resume-preview {
+        width: 100%;
+        box-sizing: border-box;
+        padding: clamp(20px, 4vw, 38px);
+        background: #fff;
+        border: 1px solid #e1e7e2;
+        border-radius: 12px;
+        box-shadow: 0 18px 50px #173a2514;
+        color: #25332b;
+      }
+      .resume-preview h3 { margin: 0 0 5px; font-size: 1.55rem; }
+      .resume-preview .resume-role { margin: 0 0 14px; color: #26734d; font-weight: 600; }
+      .resume-preview .resume-contact { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.8rem; color: #536159; }
+      .resume-preview hr { border: 0; border-top: 1px solid #e5e9e6; margin: 17px 0; }
+      .resume-preview h4 { margin: 0 0 7px; color: #26734d; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+      .resume-preview p, .resume-preview li { font-size: 0.83rem; line-height: 1.55; }
+      .resume-preview p { margin: 0; }
+      .resume-preview ul { margin: 0; padding-left: 18px; }
+      .feature-cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+      .feature-card {
+        padding: 28px;
+        border: 1px solid #e1e7e2;
+        border-radius: 14px;
+        background: #fff;
+        transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        border-color: #b7d4c1;
+        box-shadow: 0 14px 32px #173a2514;
+      }
+      .feature-card-icon {
+        display: grid;
+        width: 46px;
+        height: 46px;
+        margin-bottom: 18px;
+        place-items: center;
+        border-radius: 12px;
+        background: #edf5ef;
+        color: #3fec95;
+      }
+      .feature-card-icon svg { width: 23px; height: 23px; }
+      .feature-card h3 { margin: 0 0 9px; }
+      .feature-card p { margin: 0; line-height: 1.65; }
+      @media (max-width: 760px) {
+        .feature-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 520px) {
+        .feature-cards { grid-template-columns: 1fr; }
+        .feature-card { padding: 23px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .feature-card { transition: none; }
+        .feature-card:hover { transform: none; }
+      }
+      @media (max-width: 760px) {
+        .ai-feature-layout { grid-template-columns: 1fr; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ai-link-icon { animation: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <span class="tag">AI-based · ATS-friendly</span>
+      <h1>Real resumes,<br />not rejections.</h1>
+      <p>
+        Build a clean single-column resume for IT, Mechanical, Civil,
+        Electronics and more. Live preview, real-time ATS checks and AI
+        suggestions.
+      </p>
+      <div class="row">
+        <a class="pill dark" href="builder.html">Generate Resume →</a
+        ><a class="pill ai-link" href="ai-builder.html"><span class="ai-link-icon" aria-hidden="true">✨</span>AI Build Resume <span class="best-format">· Best format</span></a
+        ><a class="pill" href="#demo">See template</a>
+      </div>
+      <div class="row" style="margin-top: 28px; gap: 26px">
+        <div class="cnt">
+          <b data-count="resumes" id="resumeBadge">0</b
+          ><small>Resumes generated</small>
+        </div>
+        <div class="cnt">
+          <b data-count="visits" id="visitBadge">0</b><small>Visits</small>
+        </div>
+      </div>
+    </section>
+    <section class="wrap">
+      <h2 style="text-align: center">
+        Format built for the ATS used by top hiring teams
+      </h2>
+      <div id="mq"></div>
+      <p class="note">
+        Logos and names belong to their owners and only show the kind of
+        employers whose ATS-style parsing this format is designed for. No
+        affiliation, endorsement or selection guarantee.
+      </p>
+    </section>
+    <section class="ai-feature-section" id="features">
+      <div class="ai-feature-layout">
+        <div class="ai-feature-copy">
+          <div class="ai-feature-label">AI resume builder</div>
+          <h2>Build your resume with a little help.</h2>
+          <p>Start with your experience. Get tailored suggestions and see your ATS-friendly resume take shape beside you.</p>
+          <div class="ai-feature-list">
+            <div class="ai-feature-item"><span aria-hidden="true">✓</span> Suggestions based on your resume content</div>
+            <div class="ai-feature-item"><span aria-hidden="true">✓</span> Clean, editable single-column layout</div>
+          </div>
+          <a class="pill dark" href="ai-builder.html">Try AI Build Resume →</a>
+        </div>
+        <div id="demo" class="resume-preview" aria-label="Example resume preview">
+          <h3>Jordan Lee</h3>
+          <p class="resume-role">Frontend Developer</p>
+          <div class="resume-contact">
+            <span>⌖ Portland, OR</span>
+            <span>✉ jordan.lee@example.com</span>
+            <span>☎ (503) 555-0148</span>
+          </div>
+          <hr />
+          <h4>Profile</h4>
+          <p>Frontend developer focused on accessible interfaces, responsive design, and dependable user experiences.</p>
+          <hr />
+          <h4>Experience</h4>
+          <p><strong>Web Developer</strong> · Northstar Studio · 2022–Present</p>
+          <ul><li>Built reusable interface components for customer-facing web products.</li><li>Improved page performance and mobile usability across key workflows.</li></ul>
+          <hr />
+          <h4>Skills</h4>
+          <p>JavaScript · React · HTML · CSS · Accessibility · Git</p>
+        </div>
+      </div>
+    </section>
+    <section class="wrap">
+      <div class="feature-cards">
+        <div class="feature-card">
+          <div class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5h11v15H5V5h2"/><path d="M9 3h6v4H9zM8 12h8M8 16h6"/></svg></div>
+          <h3>Step by step</h3>
+          <p>Add your details, summary, experience, skills, projects, education and more in a clear flow.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 14.2 9.8 21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2L12 3Z"/></svg></div>
+          <h3>Make it yours</h3>
+          <p>Choose fonts, sizes and colours, edit headings, or add sections to match your style.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Catch errors early</h3>
+          <p>Get clear alerts for invalid email addresses, phone numbers and links as you type.</p>
+        </div>
+      </div>
+    </section>
+    <script src="core.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
